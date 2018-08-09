@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 .DS_Store
 /.build
 /Packages
 /*.xcodeproj
-=======
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -72,4 +70,3 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
->>>>>>> 451b3ed4e1e9b0d420e8e9aa924cfc225bef33e5
