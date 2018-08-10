@@ -14,3 +14,13 @@ public protocol TaskRepresentable {
     func resume() throws
     func cancel() throws
 }
+
+extension URLSessionTask: TaskRepresentable {
+    public var request: RequestRepresentable {
+        return currentRequest!
+    }
+    
+    public var response: ResponseRepresentable? {
+        return nil
+    }
+}
