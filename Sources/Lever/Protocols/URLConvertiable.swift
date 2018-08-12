@@ -15,8 +15,14 @@ extension Lever.Error {
 
 // MARK: - URLConvertiable.
 
-public protocol URLConvertiable {
+public protocol URLConvertiable: RequestConvertiable {
     func asURL() throws -> URL
+}
+
+extension URLConvertiable {
+    public func asRequest() throws -> URLRequest {
+        return URLRequest(url: try asURL())
+    }
 }
 
 // MARK: - Property.
