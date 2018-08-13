@@ -147,24 +147,24 @@ extension Session {
 
 extension Session {
     private func _task(for task: URLSessionTask) -> TaskRepresentable? {
-        return _sessionQueue.sync { [unowned self] in self._tasks.first(where: { $0.task == task }) }
+        return _sessionQueue.sync { [unowned self] in self._tasks.first { $0.task == task } }
     }
     
     private func _dataTask(for task: URLSessionDataTask) -> DataTaskRepresentable? {
-        return _sessionQueue.sync { [unowned self] in self._dataTasks.first(where: { $0.task == task }) }
+        return _sessionQueue.sync { [unowned self] in self._dataTasks.first { $0.task == task } }
     }
     
     private func _downloadTask(for task: URLSessionDownloadTask) -> DownloadTaskRepresentable? {
-        return _sessionQueue.sync { [unowned self] in self._downloadTasks.first(where: { $0.task == task }) }
+        return _sessionQueue.sync { [unowned self] in self._downloadTasks.first { $0.task == task } }
     }
     
     private func _uploadTask(for task: URLSessionUploadTask) -> UploadTaskRepresentable? {
-        return _sessionQueue.sync { [unowned self] in self._uploadTasks.first(where: { $0.task == task }) }
+        return _sessionQueue.sync { [unowned self] in self._uploadTasks.first { $0.task == task } }
     }
     
     @available(OSX 10.11, *)
     private func _streamTask(for task: URLSessionStreamTask) -> StreamTaskRepresentable? {
-        return _sessionQueue.sync { [unowned self] in self._streamTasks.first(where: { $0.task == task }) }
+        return _sessionQueue.sync { [unowned self] in self._streamTasks.first { $0.task == task } }
     }
     
     @discardableResult
@@ -172,15 +172,15 @@ extension Session {
         return _sessionQueue.sync { [unowned self] in
             switch task {
             case let task as URLSessionUploadTask:
-                return self._uploadTasks.firstIndex(where: { $0.task == task }).flatMap { self._uploadTasks.remove(at: $0) }
+                return self._uploadTasks.firstIndex { $0.task == task }.flatMap { self._uploadTasks.remove(at: $0) }
             case let task as URLSessionDownloadTask:
-                return self._downloadTasks.firstIndex(where: { $0.task == task }).flatMap { self._downloadTasks.remove(at: $0) }
+                return self._downloadTasks.firstIndex { $0.task == task }.flatMap { self._downloadTasks.remove(at: $0) }
             case let task as URLSessionDataTask:
-                return self._dataTasks.firstIndex(where: { $0.task == task }).flatMap { self._dataTasks.remove(at: $0) }
+                return self._dataTasks.firstIndex { $0.task == task }.flatMap { self._dataTasks.remove(at: $0) }
             default:
                 if #available(OSX 10.11, *) {
                     if let task = task as? URLSessionStreamTask {
-                        return self._streamTasks.firstIndex(where: { $0.task == task }).flatMap { self._streamTasks.remove(at: $0) }
+                        return self._streamTasks.firstIndex { $0.task == task }.flatMap { self._streamTasks.remove(at: $0) }
                     }
                 }
                 return nil
