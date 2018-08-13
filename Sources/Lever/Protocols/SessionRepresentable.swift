@@ -13,6 +13,11 @@ public protocol SessionResponsable {
     
     func invalid(_ handler: @escaping (_ error: Swift.Error?) -> Void)
     func challenge(_ handler: @escaping (_ challenge: URLAuthenticationChallenge, _ completion:  (_ disposition: URLSession.AuthChallengeDisposition, _ credential: URLCredential?) -> Void) -> Void)
+    
+    func task(for request: RequestConvertiable) throws -> DataTaskRepresentable
+    func download(from request: RequestConvertiable) throws -> DownloadTaskRepresentable
+    
+    func tasks<T>(of type: T.Type) throws -> [T] where T: TaskRepresentable
 }
 
 public protocol SessionRepresentable: SessionResponsable {
