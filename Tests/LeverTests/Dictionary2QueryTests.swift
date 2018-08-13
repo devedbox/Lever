@@ -15,6 +15,6 @@ class Dictionary2QueryTests: XCTestCase {
     
     func testSimpleAsQuery() {
         let dic = ["loc": 1, "subtype": 2, "type": "typeVal", "anotherType": ["这是个中文", "This is a message."]] as [String : Any]
-        print(try! dic.asQuery())
+        print(dic.asQuery())
     }
 }
