@@ -118,7 +118,12 @@ extension Session {
 
 extension Session {
     public var allTasks: [TaskRepresentable] { return _tasks }
-    /// Returns
+    /// Returns all tasks for the given speficied task type `T` conforms to `TaskRepresentable`.
+    ///
+    /// - Parameter type: The type of the results tasks.
+    /// - Returns: A list of tasks of type `T`.
+    ///
+    /// - Throws: **Lever.Error<T.Type>** if there is no matching results.
     public func tasks<T>(of type: T.Type) throws -> [T] where T: TaskRepresentable {
         switch type {
         case is DataTaskRepresentable.Type:     return _dataTasks     as! [T]
