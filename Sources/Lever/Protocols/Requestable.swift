@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol Requestable {
-    func request(_ request: RequestRepresentable) throws -> TaskRepresentable
+    func request(_ request: RequestConvertiable) throws -> ResultPresentable
 }
