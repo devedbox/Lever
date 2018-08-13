@@ -8,9 +8,19 @@
 import Foundation
 
 public protocol TaskResponsable {
+    /// Handler for delegate method indicates a delayed request will begin. Using this handler to decide should begin the
+    /// request by calling completion handler with the disposition and request to be began.
+    ///
+    /// - Parameter request: The original delayed request.
+    /// - Parameter completion: The completion to decide the behavior of the original request.
+    /// - Parameter completion.disposition: A value of `URLSession.DelayedRequestDisposition` indicates the action of the request.
+    /// - Parameter completion.request: The request to be started.
     @available(OSX 10.13, *)
     var willBeginDelayedRequestHandler: ((URLRequest, (URLSession.DelayedRequestDisposition, URLRequest?) -> Void) -> Void)? { get }
+    /// Handler for delegate method indicates the task is in state of waiting for connectivity.
     var waitingForConnectivityHandler: (() -> Void)? { get }
+    /// Handler for delegate method indicates the http redirection will happen. Call the completion handler to decide to
+    /// redirect or not by passing parameters of `URLRequest?`.
     var redirectionHandler: ((HTTPURLResponse, URLRequest, (URLRequest?) -> Void) -> Void)? { get }
     var challengeHandler: ((URLAuthenticationChallenge, (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Void)? { get }
     var needNewBodyStreamHandler: (((InputStream?) -> Void) -> Void)? { get }
