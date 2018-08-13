@@ -96,7 +96,7 @@ extension Session {
 
 extension Session {
     public func upload(
-        request: RequestConvertiable,
+        to request: RequestConvertiable,
         from data: Data) throws -> UploadTaskRepresentable
     {
         let task = UploadTask(session: self, task: _session.uploadTask(with: try request.asRequest(), from: data))
