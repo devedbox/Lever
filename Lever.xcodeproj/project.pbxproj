@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		DCFCA7532121A47F006239F5 /* ResultRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFCA7522121A47F006239F5 /* ResultRepresentable.swift */; };
 		OBJ_46 /* Lever.Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Lever.Error.swift */; };
 		OBJ_47 /* Array.RemoveObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* Array.RemoveObject.swift */; };
 		OBJ_48 /* Dictionary.AsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* Dictionary.AsQuery.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DCFCA7522121A47F006239F5 /* ResultRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRepresentable.swift; sourceTree = "<group>"; };
 		"Lever::Lever::Product" /* Lever.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Lever.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Lever::LeverTests::Product" /* LeverTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_11 /* Array.RemoveObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.RemoveObject.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				OBJ_22 /* TaskRepresentable.swift */,
 				OBJ_23 /* URLConvertiable.swift */,
 				OBJ_24 /* URLEncodable.swift */,
+				DCFCA7522121A47F006239F5 /* ResultRepresentable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -183,7 +186,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -191,7 +194,6 @@
 				OBJ_33 /* Tests */,
 				OBJ_38 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -280,7 +282,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_38 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -311,6 +313,7 @@
 				OBJ_56 /* SessionRepresentable.swift in Sources */,
 				OBJ_57 /* TaskRepresentable.swift in Sources */,
 				OBJ_58 /* URLConvertiable.swift in Sources */,
+				DCFCA7532121A47F006239F5 /* ResultRepresentable.swift in Sources */,
 				OBJ_59 /* URLEncodable.swift in Sources */,
 				OBJ_60 /* HTTPContentType.swift in Sources */,
 				OBJ_61 /* JSONEncoder.swift in Sources */,
