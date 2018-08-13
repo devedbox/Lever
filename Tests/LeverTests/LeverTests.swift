@@ -16,6 +16,12 @@ final class LeverTests: XCTestCase {
         let exp = expectation(description: "resp")
         exp.expectedFulfillmentCount = 2
         let task = try? Lever.Session.shared.task(for: "https://api.github.com/repos/apple/swift/releases")
+        do {
+            let _ = try Lever.Session.shared.tasks(of: DataTask.self)
+        } catch let error as Lever.Error<DataTask.Type> {
+            print("\(error): \(error.context!)")
+        } catch _ { }
+        print("Logging request task: \(String(describing: try? Lever.Session.shared.tasks(of: DataTask.self)))")
         task?.response { response, completion in
             print(response)
             completion(.allow)

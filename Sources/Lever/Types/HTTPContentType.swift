@@ -10,7 +10,9 @@ import Foundation
 // MARK: - Error.
 
 extension Lever.Error {
-    public static let invalidHTTPContentTypeValue = Lever.Error(description: "The given value of Content-Type has invalid format.")
+    public static var invalidHTTPContentTypeValue: VoidError {
+        return Lever.Error(description: "The given value of Content-Type has invalid format.")
+    }
 }
 
 // MARK: - HTTPContentType.
@@ -28,7 +30,7 @@ public struct HTTPContentType {
     public init(value: String) throws {
         let raws = value.split(separator: "/").map { String($0) }
         guard raws.count == 2 else {
-            throw Lever.Error.invalidHTTPContentTypeValue
+            throw VoidError.invalidHTTPContentTypeValue
         }
         
         self.init(type: raws[0], subtype: raws[1])

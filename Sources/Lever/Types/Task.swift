@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - Error.
 
-extension Lever.Error {
-    public static let taskIsInRunning = Lever.Error(description: "The state of given task is in running.")
-    public static let taskIsCompleted = Lever.Error(description: "The state of given task is completed.")
-    public static let taskIsCanceling = Lever.Error(description: "The state of given task is canceling.")
-    public static let taskIsSuspended = Lever.Error(description: "The state of given task is suspended.")
+extension Lever.Error where Context == Void {
+    public static let taskIsInRunning = VoidError(description: "The state of given task is in running.")
+    public static let taskIsCompleted = VoidError(description: "The state of given task is completed.")
+    public static let taskIsCanceling = VoidError(description: "The state of given task is canceling.")
+    public static var taskIsSuspended = VoidError(description: "The state of given task is suspended.")
 }
 
 // MARK: - Task.
@@ -98,11 +98,11 @@ extension Task {
     public func resume() throws {
         switch _task.state {
         case .canceling:
-            throw Lever.Error.taskIsCanceling
+            throw VoidError.taskIsCanceling
         case .completed:
-            throw Lever.Error.taskIsCompleted
+            throw VoidError.taskIsCompleted
         case .running:
-            throw Lever.Error.taskIsInRunning
+            throw VoidError.taskIsInRunning
         case .suspended:
             _task.resume()
         }
@@ -111,9 +111,9 @@ extension Task {
     public func cancel() throws {
         switch _task.state {
         case .canceling:
-            throw Lever.Error.taskIsCanceling
+            throw VoidError.taskIsCanceling
         case .completed:
-            throw Lever.Error.taskIsCompleted
+            throw VoidError.taskIsCompleted
         case .running: fallthrough
         case .suspended:
             _task.cancel()

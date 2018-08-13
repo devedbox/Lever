@@ -9,9 +9,9 @@ import Foundation
 
 // MARK: - Error.
 
-extension Lever.Error {
-    public static let createsUrlComponentsFailed = Lever.Error(description: "Creates url components failed.")
-    public static let nilUrlValueFromUrlComponents = Lever.Error(description: "Fetched nil value from 'URLComponents.url'.")
+extension Lever.Error where Context == Void {
+    public static let createsUrlComponentsFailed = VoidError(description: "Creates url components failed.")
+    public static let nilUrlValueFromUrlComponents = VoidError(description: "Fetched nil value from 'URLComponents.url'.")
 }
 
 // MARK: - URLEncoder.

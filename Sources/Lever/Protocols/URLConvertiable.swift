@@ -9,8 +9,8 @@ import Foundation
 
 // MARK: - Errors.
 
-extension Lever.Error {
-    public static let urlInitFailed = Lever.Error(description: "Creates instance of URL failed via 'init(string: String)'")
+extension Lever.Error where Context == Void {
+    public static let urlInitFailed = VoidError(description: "Creates instance of URL failed via 'init(string: String)'")
 }
 
 // MARK: - URLConvertiable.

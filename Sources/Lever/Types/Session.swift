@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - Session.
+
 public class Session: NSObject, SessionRepresentable {
     private struct _SharedToken {
         static let instance = Session(config: .default)
@@ -15,20 +17,23 @@ public class Session: NSObject, SessionRepresentable {
     public class var shared: Session { return _SharedToken.instance }
     
     private let _session: URLSession
-    public var session: URLSession { return _session }
+    public var session  : URLSession { return _session }
     
-    private var _tasks: [TaskRepresentable] {
-        return _dataTasks as [TaskRepresentable] + _downloadTasks as [TaskRepresentable] + _uploadTasks as [TaskRepresentable] + _streamTasks as [TaskRepresentable]
+    private var _tasks         : [TaskRepresentable] {
+        return _dataTasks     as [TaskRepresentable]
+             + _downloadTasks as [TaskRepresentable]
+             + _uploadTasks   as [TaskRepresentable]
+             + _streamTasks   as [TaskRepresentable]
     }
-    private var _dataTasks: [DataTaskRepresentable] = []
+    private var _dataTasks    : [DataTaskRepresentable]     = []
     private var _downloadTasks: [DownloadTaskRepresentable] = []
-    private var _uploadTasks: [UploadTaskRepresentable] = []
-    private var _streamTasks: [StreamTaskRepresentable] = []
+    private var _uploadTasks  : [UploadTaskRepresentable]   = []
+    private var _streamTasks  : [StreamTaskRepresentable]   = []
     
     private let _sessionQueue = DispatchQueue(label: "com.session.lever")
     internal weak var sessionDelegate: SessionDelegate?
     
-    public private(set) var invalidHandler: ((Swift.Error?) -> Void)?
+    public private(set) var invalidHandler  : ((Swift.Error?) -> Void)?
     public private(set) var challengeHandler: ((URLAuthenticationChallenge, (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Void)?
     
     public init(session: URLSession) {
@@ -90,13 +95,19 @@ extension Session {
 }
 
 extension Session {
-    public func upload(to request: RequestConvertiable, from data: Data) throws -> UploadTaskRepresentable {
+    public func upload(
+        request: RequestConvertiable,
+        from data: Data) throws -> UploadTaskRepresentable
+    {
         let task = UploadTask(session: self, task: _session.uploadTask(with: try request.asRequest(), from: data))
         _sessionQueue.sync { [unowned self] in self._uploadTasks.append(task) }
         return task
     }
     
-    public func upload(to request: RequestConvertiable, from file: URLConvertiable) throws -> UploadTaskRepresentable {
+    public func upload(
+        to request: RequestConvertiable,
+        from file: URLConvertiable) throws -> UploadTaskRepresentable
+    {
         let task = UploadTask(session: self, task: _session.uploadTask(with: try request.asRequest(), fromFile: try file.asURL()))
         _sessionQueue.sync { [unowned self] in self._uploadTasks.append(task) }
         return task
@@ -107,6 +118,16 @@ extension Session {
 
 extension Session {
     public var allTasks: [TaskRepresentable] { return _tasks }
+    /// Returns
+    public func tasks<T>(of type: T.Type) throws -> [T] where T: TaskRepresentable {
+        switch type {
+        case is DataTaskRepresentable.Type:     return _dataTasks     as! [T]
+        case is DownloadTaskRepresentable.Type: return _downloadTasks as! [T]
+        case is UploadTaskRepresentable.Type:   return _uploadTasks   as! [T]
+        case is StreamTaskRepresentable.Type:   return _streamTasks   as! [T]
+        default: throw Lever.Error<T.Type>(description: "Invalid task type for fetching tasks.", context: type)
+        }
+    }
     
     public func invalid(_ handler: @escaping (Swift.Error?) -> Void) {
         invalidHandler = handler
