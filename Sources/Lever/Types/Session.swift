@@ -31,7 +31,7 @@ public class Session: NSObject, SessionRepresentable {
     private var _streamTasks  : [StreamTaskRepresentable]   = []
     
     private let _sessionQueue = DispatchQueue(label: "com.session.lever")
-    internal weak var sessionDelegate: SessionDelegate?
+    internal weak var sessionDelegate: Delegate?
     
     public private(set) var invalidHandler  : ((Swift.Error?) -> Void)?
     public private(set) var challengeHandler: ((URLAuthenticationChallenge, (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Void)?
@@ -47,7 +47,7 @@ extension Session {
         delegate: URLSessionDelegate? = nil,
         delegateQueue: OperationQueue? = nil)
     {
-        let sessionDelegate = SessionDelegate()
+        let sessionDelegate = Delegate()
         self.init(session: .init(configuration: config, delegate: delegate ?? sessionDelegate, delegateQueue: delegateQueue))
         
         if case .none = delegate {

@@ -1,5 +1,5 @@
 //
-//  SessionDelegate.swift
+//  Delegate.swift
 //  Lever
 //
 //  Created by devedbox on 2018/8/10.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal class SessionDelegate: NSObject {
+internal class Delegate: NSObject {
     
     // MARK: TasksExtractor.
     
@@ -132,7 +132,7 @@ internal class SessionDelegate: NSObject {
 
 // MARK: - URLSessionDelegate.
 
-extension SessionDelegate: URLSessionDelegate {
+extension Delegate: URLSessionDelegate {
     func urlSession(
         _ session: URLSession,
         didBecomeInvalidWithError error: Swift.Error?)
@@ -154,7 +154,7 @@ extension SessionDelegate: URLSessionDelegate {
 
 // MARK: - URLSessionTaskDelegate.
 
-extension SessionDelegate: URLSessionTaskDelegate {
+extension Delegate: URLSessionTaskDelegate {
     @available(iOS 11.0, OSX 10.13, *)
     func urlSession(
         _ session: URLSession,
@@ -243,7 +243,7 @@ extension SessionDelegate: URLSessionTaskDelegate {
 
 // MARK: - URLSessionDataDelegate.
 
-extension SessionDelegate: URLSessionDataDelegate {
+extension Delegate: URLSessionDataDelegate {
     func urlSession(
         _ session: URLSession,
         dataTask: URLSessionDataTask,
@@ -296,7 +296,7 @@ extension SessionDelegate: URLSessionDataDelegate {
 
 // MARK: - URLSessionDownloadDelegate.
 
-extension SessionDelegate: URLSessionDownloadDelegate {
+extension Delegate: URLSessionDownloadDelegate {
     func urlSession(
         _ session: URLSession,
         downloadTask: URLSessionDownloadTask,
@@ -330,7 +330,7 @@ extension SessionDelegate: URLSessionDownloadDelegate {
 
 // MARK: - URLSessionStreamDelegate.
 
-extension SessionDelegate: URLSessionStreamDelegate {
+extension Delegate: URLSessionStreamDelegate {
     @available(OSX 10.11, *)
     func urlSession(
         _ session: URLSession,

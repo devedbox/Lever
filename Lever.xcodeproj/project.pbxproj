@@ -40,7 +40,7 @@
 		OBJ_61 /* JSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_27 /* JSONEncoder.swift */; };
 		OBJ_62 /* PropertyListEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* PropertyListEncoder.swift */; };
 		OBJ_63 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_29 /* Session.swift */; };
-		OBJ_64 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* SessionDelegate.swift */; };
+		OBJ_64 /* Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* Delegate.swift */; };
 		OBJ_65 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_31 /* Task.swift */; };
 		OBJ_66 /* URLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_32 /* URLEncoder.swift */; };
 		OBJ_73 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
@@ -69,7 +69,7 @@
 
 /* Begin PBXFileReference section */
 		DCFCA7522121A47F006239F5 /* ResultRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRepresentable.swift; sourceTree = "<group>"; };
-		"Lever::Lever::Product" /* Lever.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Lever.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Lever::Lever::Product" /* Lever.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lever.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Lever::LeverTests::Product" /* LeverTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = LeverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_11 /* Array.RemoveObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.RemoveObject.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Dictionary.AsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.AsQuery.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		OBJ_27 /* JSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoder.swift; sourceTree = "<group>"; };
 		OBJ_28 /* PropertyListEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListEncoder.swift; sourceTree = "<group>"; };
 		OBJ_29 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		OBJ_30 /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
+		OBJ_30 /* Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate.swift; sourceTree = "<group>"; };
 		OBJ_31 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		OBJ_32 /* URLEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEncoder.swift; sourceTree = "<group>"; };
 		OBJ_35 /* Dictionary2QueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary2QueryTests.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_29 /* Session.swift */,
-				OBJ_30 /* SessionDelegate.swift */,
+				OBJ_30 /* Delegate.swift */,
 				OBJ_31 /* Task.swift */,
 				OBJ_26 /* HTTPContentType.swift */,
 				OBJ_27 /* JSONEncoder.swift */,
@@ -319,7 +319,7 @@
 				OBJ_61 /* JSONEncoder.swift in Sources */,
 				OBJ_62 /* PropertyListEncoder.swift in Sources */,
 				OBJ_63 /* Session.swift in Sources */,
-				OBJ_64 /* SessionDelegate.swift in Sources */,
+				OBJ_64 /* Delegate.swift in Sources */,
 				OBJ_65 /* Task.swift in Sources */,
 				OBJ_66 /* URLEncoder.swift in Sources */,
 			);
